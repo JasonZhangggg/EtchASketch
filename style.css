@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  background-color: lightgray;
+}
+h1 {
+  font-family: Roboto;
+  font-size: 70px;
+  color: rgb(53, 53, 53);
+  margin: 0px;
+}
+
+.board {
+  height: 600px;
+  width: 600px;
+  border: 3px solid gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.tile {
+  flex: 1;
+  background-color: white;
+  user-select: none;
+}
+.row {
+  flex: 1;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+#clear {
+  padding: 10px 40px;
+}
+
+#input {
+  width: 110px;
+  height: 30px;
+  text-align: center;
+}
+
+.vert {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#colorPicker {
+  width: 90px;
+  height: 90px;
+  padding: 0px;
+  border: none;
+}
