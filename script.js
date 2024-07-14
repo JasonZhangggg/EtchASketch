@@ -1,6 +1,6 @@
 let boardSize = 64;
 mouseDown = false;
-
+rainbow = false;
 document.body.addEventListener("mousedown", () => {
   mouseDown = true;
 });
@@ -11,6 +11,20 @@ document.body.addEventListener("mouseup", () => {
 document.querySelector("#clear").addEventListener("click", () => {
   deleteBoard();
   drawBoard();
+});
+
+const rainbowButton = document.querySelector("#rainbow");
+const regularButton = document.querySelector("#regular");
+rainbowButton.addEventListener("click", () => {
+  rainbow = true;
+  rainbowButton.disabled = true;
+  regularButton.disabled = false;
+});
+
+regularButton.addEventListener("click", () => {
+  rainbow = false;
+  rainbowButton.disabled = false;
+  regularButton.disabled = true;
 });
 
 const board = document.querySelector(".board");
@@ -58,10 +72,13 @@ function drawBoard() {
 function recolor(e) {
   if (e.target.classList.contains("tile")) {
     if (mouseDown || e.type == "mousedown") {
-      console.log(document.querySelector("#colorPicker").value);
-      e.target.style.cssText = `background-color: ${
-        document.querySelector("#colorPicker").value
-      };`;
+      let tileColor;
+      if (!rainbow) {
+        tileColor = document.querySelector("#colorPicker").value;
+      } else {
+        tileColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+      e.target.style.cssText = `background-color: ${tileColor};`;
     }
   }
 }
